@@ -29,8 +29,8 @@ Assert throws a failure/message only when the actual solution doesn't equal the 
 
 ## Constraints
 Normally none
-1 <= T <= 1000
-1 <= length of S <= 1000
+Test Cases: 1 <= T <= 1000 
+Parallel Channels/shows: 1 <= S <= 1000
 
 ## Sample Input
 Here number of test cases T=3

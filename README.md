@@ -8,6 +8,7 @@ Details and how to test in `How To Test` file.
 2 general approaches provided, both take **O(nlogn)** time
 ## Assumptions:
 * If channel-1's end-time = channel-2's start-time, assume **NO** overlap
+The test file is assumed to be valid with the various values given for tests/channels.
 ## Approach-1 (Solution2.java):
 Given this input,
 ```
