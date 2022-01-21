@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-// Unit test class
 public class SolutionTest {
 
     private String status = "Running %s with testcase-%d";

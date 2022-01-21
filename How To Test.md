@@ -28,7 +28,7 @@ Each solution's output is compared with provided expected output and `Assert`ed.
 Assert throws a failure/message only when the actual solution doesn't equal the expected value.
 
 ## Constraints
-Without loss of functionality, the epoch is some situations cast as an int value.
+Normally none
 1 <= T <= 1000
 1 <= length of S <= 1000
 
