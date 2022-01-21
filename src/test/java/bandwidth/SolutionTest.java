@@ -12,7 +12,6 @@ import java.io.File;
 import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -42,11 +41,11 @@ public class SolutionTest {
                 int channels = Integer.parseInt(lines.get(numLines));
                 numLines++;
 
-                int[][] channelsInfo = new int[channels][3];
+                long[][] channelsInfo = new long[channels][3];
                 for(int channel = 0; channel < channels; channel++) {
-                    List<Integer> s = Stream.of(lines.get(numLines).split(","))
+                    List<Long> s = Stream.of(lines.get(numLines).split(","))
                             .map(String::trim)
-                            .map(Integer::parseInt)
+                            .map(Long::parseLong)
                             .collect(Collectors.toList());
 
                     for(int col = 0; col < 3; col++) {
@@ -60,7 +59,6 @@ public class SolutionTest {
 
                 callSolution3(channelsInfo, i+1, expected);
                 callSolution2(channelsInfo, i+1, expected);
-                callSolution1(channelsInfo, i+1, expected);
 
             }
             //lines.forEach(System.out::println);
@@ -73,29 +71,17 @@ public class SolutionTest {
         }
     }
 
-    private void callSolution1(int[][] channelsInfo, int test, int expected) {
-        System.out.println(String.format(this.status, "Solution1", test));
-        int bandwidth = Solution1.maxBandwidth1(channelsInfo);
-
-        Assert.assertEquals(expected, bandwidth);
-    }
-
-    private void callSolution2(int[][] channelsInfo, int test, int expected) {
+    private void callSolution2(long[][] channelsInfo, int test, int expected) {
         System.out.println(String.format(this.status, "Solution2", test));
 
-        List<ChannelShowInfo> shows = new ArrayList<ChannelShowInfo>();
-        for(int i = 0; i < channelsInfo.length; i++) {
-            shows.add(new ChannelShowInfo(channelsInfo[i][0], channelsInfo[i][1], channelsInfo[i][2]));
-        }
-
-        int bandwidth = Solution2.maxBandwidth2(shows);
+        long bandwidth = Solution2.maxBandwidth2(channelsInfo);
 
         Assert.assertEquals(expected, bandwidth);
     }
 
-    private void callSolution3(int[][] channelsInfo, int test, int expected) {
+    private void callSolution3(long[][] channelsInfo, int test, int expected) {
         System.out.println(String.format(this.status, "Solution3", test));
-        int bandwidth = Solution3.maxBandwidth3(channelsInfo);
+        long bandwidth = Solution3.maxBandwidth3(channelsInfo);
 
         Assert.assertEquals(expected, bandwidth);
     }

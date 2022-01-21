@@ -8,7 +8,7 @@ Details and how to test in `How To Test` file.
 2 general approaches provided, both take **O(nlogn)** time
 ## Assumptions:
 * If channel-1's end-time = channel-2's start-time, assume **NO** overlap
-## Approach-1:
+## Approach-1 (Solution2.java):
 Given this input,
 ```
 800, 1200, 4
@@ -17,18 +17,34 @@ Given this input,
 1500, 1600, 11
 ```
 ### Step 1: 
-Sort in ascending order by the end-times (column 2)
-* If 2 end-times are the same, sort in ascending order by the start-times (Column 1)
+Have 2 tables, sorted in ascending order by the epoch-times (start & end)
+* If 2 epoch-times are the same, sort in ascending order by bandwidth
 
 Most efficient sorting takes **O(nlogn)** time
 
 Input looks like this now:
-```
-1. 600, 800, 6
-2. 800, 1200, 4
-3. 900, 1400, 5
-4. 1500, 1600, 11
-```
+<table>
+<tr><th>Epoch-begin</th><th>Epoch-end</th></tr>
+<tr><td>
+
+| Epoch | Bandwidth |
+| ----: | --------: |
+| 600   | 6         |
+| 800   | 4         |
+| 900   | 5         |
+| 1500  | 11        |
+
+</td><td>
+
+| Epoch | Bandwidth |
+| ----: | --------: |
+| 800   | 6         |
+| 1200  | 4         |
+| 1400  | 5         |
+| 1600  | 11        |
+
+</td></tr> </table>
+
 ### Step 2: 
 Figure sliding windows including each channel from the beginning.
 All channels starting with
@@ -40,8 +56,8 @@ All channels starting with
 This processing takes **O(n)** time
 ### Step 3: 
 Running maximum from above is **`11`**
-> Approach-1 takes **O(nlogn)** time
-## Approach-2:
+> Approach-1 takes **O(nlogn)** time, space complexity is **O(n)**
+## Approach-2 (Solution3.java):
 Given this input,
 ```
 800, 1200, 4
@@ -99,5 +115,5 @@ Calculate running (maximum bandwidth) as below:
 
 This step takes **O(n)** time, maximum bandwidth from above is **`11`**
 
-> Approach-2 takes **O(nlogn)** time
+> Approach-2 takes **O(nlogn)** time, space complexity is **O(n)**
 

@@ -1,7 +1,8 @@
 package bandwidth;
 
-import java.util.Arrays;
-import java.util.Comparator;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Solution3 {
   
@@ -23,17 +24,19 @@ public class Solution3 {
 	 *    { 1200, -4},
 				{1400, -5},
 	 */
-	public static int maxBandwidth3(int[][] shows) {
+	public static long maxBandwidth3(long[][] shows) {
 
-		int[][] timeBWs = buildNormalizedShowInfo(shows);
+		List<ChannelShowInfo> timeBWs = buildNormalizedShowInfo(shows);
+		//System.out.println("3 B4: " + timeBWs.toString());
 
-		sortNormalizedTimes(timeBWs);
+		Collections.sort(timeBWs);
+		//System.out.println("3 A4: " + timeBWs.toString());
 
-		int currBW = 0, maxBW = 0;
-		for(int ndx = 0; ndx < timeBWs.length; ndx++) {
+		long currBW = 0, maxBW = 0;
+		for(ChannelShowInfo timeBW : timeBWs) {
 			// y-axis cumulatively starts/ends with 0 
 			// y-axis has a series of peaks, highest peak is the highest Bandwidth 
-			currBW += timeBWs[ndx][1];
+			currBW += timeBW.bandwidth;
 			maxBW = Math.max(currBW, maxBW);
 		}
 
@@ -47,38 +50,13 @@ public class Solution3 {
 	 * where start-time(show-m) = end-time(show-n), end-time(show-n) will appear earlier.
 	 * output format is [start/end time, bandwidth as +/- based on start/end time]
 	 */
-	private static int[][] buildNormalizedShowInfo(int[][] shows) {
-		int[][] times = new int[shows.length*2][2];
+	private static List<ChannelShowInfo> buildNormalizedShowInfo(long[][] shows) {
+
+		List<ChannelShowInfo> channelShows = new ArrayList<>();
 		for(int i = 0; i < shows.length; i++) {
-			times[2*i][0] = shows[i][0];
-			times[2*i][1] = shows[i][2];
-
-			times[2*i+1][0] = shows[i][1];
-			times[2*i+1][1] = -1*shows[i][2];
+			channelShows.add(new ChannelShowInfo(shows[i][0], shows[i][2]));
+			channelShows.add(new ChannelShowInfo(shows[i][1], -shows[i][2]));
 		}
-		return times;
-	}
-
-	/*
-	 * input format is : [start-time, bandwidth], [end-time, -bandwidth] etc.,
-	 * with 0-based index [0, 1]
-	 * sort on (end-time ascending order, start-time ascending order)
-	 */
-	private static void sortNormalizedTimes(int[][] shows) {
-		//System.out.println("Before: " + Arrays.deepToString(shows));
-		Arrays.sort(shows, new Comparator<int[]>() {
-			@Override
-			public int compare(int[] row1, int[] row2) {
-				if (row1[0] > row2[0]) {
-					return 1;
-				}
-				if (row1[0] == row2[0]) {
-					if (row1[1] > row2[1]) {
-						return 1;
-					}
-				}
-				return -1;
-			}
-		});
+		return channelShows;
 	}
 }
