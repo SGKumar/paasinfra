@@ -37,7 +37,7 @@ Here number of test cases T=3
 
 Second test-case viewer is keen on 4 channels (S)
 * Channels take bandwidth at 4, 6, 5, 11 respectively
-* Correct solution for **maximum bandwidth** required is `**11**`
+* Correct solution for **maximum bandwidth** required is **`11`**
 ```
 3
 3
