@@ -14,15 +14,15 @@ public class Solution3 {
 	 * Normalize start/end times to a single array with bandwidth
 	 * Input array
 	 *    { 800, 1200, 4 },
-				{ 600, 800, 6 },
-				{ 900, 1400, 5 },
-   * processed as 
-				{ 600, 6},
-				{ 800, -6},
+	 *    { 600, 800, 6 },
+	 *    { 900, 1400, 5 },
+	 * processed as 
+	 *    { 600, 6},
+	 *    { 800, -6},
 	 * 		{ 800, 4 },
-				{ 900, 5},
+	 *    { 900, 5},
 	 *    { 1200, -4},
-				{1400, -5},
+	 *    {1400, -5},
 	 */
 	public static long maxBandwidth3(long[][] shows) {
 
