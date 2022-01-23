@@ -28,6 +28,9 @@ public class SolutionTest {
             file = FileUtil.getFile(getClass().getClassLoader(), fileName);
 
             List<String> lines = Files.readAllLines(file.toPath(), StandardCharsets.UTF_8);
+            if(lines.size() == 0) {
+                throw new IllegalArgumentException("Empty file! " + fileName);
+            }
 
             // first line is number of tests
             int tests = Integer.parseInt(lines.get(0));
@@ -63,10 +66,16 @@ public class SolutionTest {
             //lines.forEach(System.out::println);
         }
         catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
+            //e.printStackTrace();
         }
         catch (URISyntaxException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
+            //e.printStackTrace();
+        }
+        catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            //e.printStackTrace();
         }
     }
 
