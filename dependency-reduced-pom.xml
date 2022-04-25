@@ -40,6 +40,28 @@
         </exclusion>
       </exclusions>
     </dependency>
+    <dependency>
+      <groupId>com.tngtech.junit.dataprovider</groupId>
+      <artifactId>junit4-dataprovider</artifactId>
+      <version>2.6</version>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <artifactId>junit-dataprovider-core</artifactId>
+          <groupId>com.tngtech.junit.dataprovider</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>spotbugs-annotations</artifactId>
+          <groupId>com.github.spotbugs</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.20</version>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>

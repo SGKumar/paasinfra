@@ -1,0 +1,13 @@
+routes:
+  - service: users
+    path: /users/**
+    url: "http://atlassian.io:10001/"
+  - service: orders
+    path: /orders/**
+    url: "http://atlassian.io:7777/"
+  - service: payments
+    path: /payments/**
+    url: "http://atlassian.io:6666/"
+  - service: atlassian
+    path: /atlassian/**
+    url: "http://atlassian.io:5555/"

@@ -1,0 +1,7 @@
+courses:
+  - name: Algorithms
+    credits: 6
+  - name: Data Structure
+    credits: 5
+  - name: Design patters
+    credits: 3
